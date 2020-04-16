@@ -31,5 +31,6 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
     <table schema="PUBLIC" tableName="RECIPE" domainObjectName="RecipeEntity"/>
     <table schema="PUBLIC" tableName="RECIPE_DETAIL" domainObjectName="RecipeDetailEntity"/>
     <table schema="PUBLIC" tableName="MATERIAL" domainObjectName="MaterialEntity"/>
+
   </context>
 </generatorConfiguration>
