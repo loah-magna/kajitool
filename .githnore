@@ -4,5 +4,8 @@
 *.iws
 *.iml
 *.ipr
+.project
 out/
+.gradle/
 kajitool-h2db/
+*.lock
