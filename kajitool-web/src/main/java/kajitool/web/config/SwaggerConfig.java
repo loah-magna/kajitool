@@ -1,14 +1,15 @@
 package kajitool.web.config;
 
-import com.google.common.base.Predicate;
+import static com.google.common.base.Predicates.*;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.google.common.base.Predicate;
+
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import static com.google.common.base.Predicates.containsPattern;
-import static com.google.common.base.Predicates.or;
 
 @Configuration
 @EnableSwagger2
@@ -22,3 +23,4 @@ public class SwaggerConfig {
         return or(containsPattern("/api*"));
     }
 }
+

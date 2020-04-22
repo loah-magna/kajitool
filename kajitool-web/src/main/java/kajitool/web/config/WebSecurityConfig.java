@@ -13,7 +13,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	//@formatter:off
-        http.csrf().csrfTokenRepository(
+        http.cors().and().csrf().csrfTokenRepository(
                 CookieCsrfTokenRepository.withHttpOnlyFalse())
         .and().oauth2Login()
         .and().authorizeRequests()

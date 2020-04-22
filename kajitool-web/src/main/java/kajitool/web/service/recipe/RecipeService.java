@@ -1,34 +1,33 @@
 package kajitool.web.service.recipe;
 
-import kajitool.web.domain.model.Recipe;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
+import kajitool.web.domain.model.Recipe;
+import kajitool.web.domain.repository.RecipeRepository;
 
 @Service
 @Transactional
 public class RecipeService {
-    private final AtomicLong sequence = new AtomicLong();
-    private final Map<Long, Recipe> map = new ConcurrentHashMap<>();
+    private final RecipeRepository recipeRepository;
 
+    public RecipeService(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
+    }
     public Recipe create(final Recipe recipe) {
-    	RecipeValidator.validateOnCreate(recipe);
-        recipe.setId(sequence.incrementAndGet());
-        map.put(recipe.getId(), recipe);
-        return recipe;
+        RecipeValidator.validateOnCreate(recipe);
+        return recipeRepository.create(recipe);
     }
     public Optional<Recipe> findById(final long id) {
-        return Optional.ofNullable(map.get(id));
+        return recipeRepository.selectById(id);
     }
     public Recipe save(final Recipe recipe) {
-    	RecipeValidator.validateOnUpdate(recipe);
-        return map.replace(recipe.getId(), recipe);
+        RecipeValidator.validateOnUpdate(recipe);
+        return recipeRepository.update(recipe);
     }
     public void remove(final long id, final int version) {
-        map.remove(id);
+        recipeRepository.remove(id, version);
     }
 }
