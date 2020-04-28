@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import kajitool.web.domain.model.Material;
 import kajitool.web.service.material.MaterialService;
 
@@ -20,6 +21,7 @@ public class MaterialResource {
         this.service = service;
     }
     @GetMapping("/")
+    @ApiOperation(value="素材を返します。", nickname="material_getAll")
     public ResponseEntity<List<Material>> getAll() {
         return ResponseEntity.ok(service.findAll());
     }

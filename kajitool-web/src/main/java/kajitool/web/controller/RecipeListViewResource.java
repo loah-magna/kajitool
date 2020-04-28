@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import kajitool.web.service.recipelist.RecipeListViewService;
 import kajitool.web.view.model.RecipeListView;
 
@@ -21,6 +22,7 @@ public class RecipeListViewResource {
         this.service = service;
     }
     @GetMapping("")
+    @ApiOperation(value="レシピ一覧を返します。", nickname="recipeListView_getAll")
     public ResponseEntity<List<RecipeListView>> getAll() {
         return ResponseEntity.ok(service.findAll());
     }
