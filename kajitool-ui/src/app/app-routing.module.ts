@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'edit-recipe',
+    loadChildren: () => import('./pages/edit-recipe/edit-recipe.module').then( m => m.EditRecipePageModule)
+  },
 ];
 
 @NgModule({
